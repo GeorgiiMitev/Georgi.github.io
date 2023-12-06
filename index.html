@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 95vh;
+            font-family: cursive;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        #number, #guessnumber, #hint, #answer {
+            float: right;
+            width: 30%;
+            border: 1px solid black;
+            margin-right: 30px;
+        }
+
+        fieldset {
+            border-radius: 10px;
+            background-color: lightcyan;
+        }
+
+        #hint, #answer {
+            border: 1px solid black;
+        }
+
+        .button {
+            width: 30%;
+            font-size: 20px;
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+        var count = 0;
+        function guess() {
+            var number1 = document.form.number1.value;
+            var number2 = document.form.number2.value;
+
+           
+            if (number2 < number1) {
+                document.form.hint.value = "HIGHER!";
+                count++;
+            }
+            else if (number2 > number1) {
+                document.form.hint.value = "LOWER!";
+                count++;
+            } else {
+                document.form.hint.value = "You guessed!";
+                document.form.answer.value =""+ count;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <form name="form">
+            <fieldset>
+                <legend>Guess the number!</legend>
+                <label for="number">Enter a number 1-100:</label>
+                <input id="number" type="text" name="number1" /><br />
+                <br />
+                <label for="guessnumber">Guess the number:</label>
+                <input id="guessnumber" type="text" name="number2" /><br />
+                <br />
+                <label for="hint">Hint:</label>
+                <input id="hint" type="text" name="hint" readonly /><br />
+                <br />
+                <label for="answer">Times guessed:</label>
+                <input id="answer" type="text" name="answer" readonly /><br />
+                <br />
+                <input type="reset" name="newgame" value="New game" class="button" />
+                <input type="button" name="check" value="Check" class="button" onclick="guess()" />
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
